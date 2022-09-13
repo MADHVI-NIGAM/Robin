@@ -1,0 +1,32 @@
+1. Module- ESB Request Handler
+Input- BMD
+Output-Authentication and validation
+Submodules- Authentication and validation
+            Creating a new request processing task
+            Taking the next available task when one task is finished
+            Cleanup
+            
+2. Module- Persistance manager
+Input- ESB request type
+Output- Request current status
+
+3. Module- Business Document Manager
+Input- all the details about the message and its sender
+output- validation and invoking an operation on an another application
+
+4. Module- Transport Manager
+Logic- It'll handle the transportation of requests
+
+5. Module- Task executor
+Input- Processing of the next available task
+Output- Task status
+
+6.Module - Message router
+Logic- Storage of data in the database that is needed for validation.
+
+7. Module- Transformation Manager
+Logic- will convert the data that travels from ESB to app and app to ESB into a format that is needed.
+
+8. Module- Security Manager
+Input- Data
+Output- Validation results
