@@ -1,3 +1,19 @@
+Modules/Submodules ordering:
+1. ESB request handler
+   i. Authentication and validation
+   ii. New request processing task
+   iii. Taking the nexr available task
+   iv. Cleanup
+2. Persistance manager
+   i. Data store
+3. Task Executor
+4. Transport Manager
+5. Security Manager
+6. Message Router
+7. Transformation Manager
+
+Modules:
+
 1. Module- ESB Request Handler
 Input- BMD
 Output-Authentication and validation
