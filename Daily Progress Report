@@ -1,3 +1,19 @@
+21 sep 2022
+Work Update:
+1. Opened a databse connection in worker.c file.
+2. worked on esb_app.c file.
+
+Action items:
+1. will continue to work on worker.c and esb_app.c file
+
+20 sep 2022
+Work Update:
+1. Worked on ESB handler.
+2. Continue to learn C (socket programming).
+
+Action items:
+1. will work on worker.c and esb_app.c file
+
 19 Sept 2022
 Work Update:
 1. Worked on ESB handler.
