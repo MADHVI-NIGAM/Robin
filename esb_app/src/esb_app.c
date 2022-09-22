@@ -38,7 +38,7 @@
 #include "esb.h"
 
 #define PATH_MAX 500
-
+extern void poll_database_for_new_request();
 int send_bmd_path_to_socket(char *msg, char *socket_file){
 	/**
 	 * TODO: This function can be implemented in a separate module
@@ -75,6 +75,7 @@ int esb_endpoint(struct http_request *req)
 	}
 	else
 	{
+		/* ESB's main processing logic calling. */
 		int sock_status = send_bmd_path_to_socket(epr.bmd_path, my_sock_file);
 		if (sock_status > 0)
 		{
@@ -83,6 +84,7 @@ int esb_endpoint(struct http_request *req)
 		}
 		else
 		{
+			printf("ESB failed to process the BMD.\n");
 			kore_log(LOG_ERR, "Failed to send BMD path sent to server socket.");
 			return (KORE_RESULT_ERROR);
 		}
