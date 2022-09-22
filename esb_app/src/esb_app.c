@@ -36,6 +36,8 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include "esb.h"
+#include <limits.h>
+#include <stdio.h>
 
 #define PATH_MAX 500
 
