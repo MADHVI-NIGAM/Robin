@@ -40,7 +40,7 @@
 #include <stdio.h>
 
 #define PATH_MAX 500
-
+extern void poll_database_for_new_request();
 int send_bmd_path_to_socket(char *msg, char *socket_file){
 	/**
 	 * TODO: This function can be implemented in a separate module
