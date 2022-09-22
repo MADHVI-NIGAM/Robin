@@ -22,6 +22,7 @@ int is_bmd_valid(bmd b)
     int valid = 1; // 1 => vaild, -1 => invalid
     // TODO: Implement the validation logic here
 
+    }
     return valid;
 }
 
@@ -33,6 +34,7 @@ int queue_the_request(bmd b)
      * and implement other logic for enqueueing the request
      * as specified in Theory of Operation.
      */
+
     return success;
 }
 

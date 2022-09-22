@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "esb.h"
-
+#include <sqlite3.h>
 int fetch_new_request_from_db(bmd *request)
 {
     /** 
@@ -18,6 +18,17 @@ int fetch_new_request_from_db(bmd *request)
 void *poll_database_for_new_requets(void *vargp)
 {
     // Step 1: Open a DB connection
+    sqlite3 *db;
+    char *ErrMsg=0
+    int rc;
+    rc = sqlite3_open("test.db", &db);
+   if( rc ) {
+      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+      return(0);
+   } else {
+      fprintf(stderr, "Opened database successfully\n");
+   }
+   sqlite3_close(db);
     int i = 0;
     while (i < 99)
     {
