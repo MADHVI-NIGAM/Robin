@@ -9,7 +9,10 @@ int fetch_new_request_from_db(bmd *request)
      * request pointer with the requests.
      */
     printf("Checking for new requests in esb_requests table.\n");
+    if(request!=NULL)
+        
     return 1; // 1 => OK, -1 => Errors
+     //printf("Checking for new requests in esb_requests table.\n");
 }
 
 /**
