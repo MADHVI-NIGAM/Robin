@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include "esb.h"
 #include <sqlite3.h>
-//smt
+
 int fetch_new_request_from_db(bmd *request)
 {
     /** 
