@@ -43,7 +43,7 @@
 extern void poll_database_for_new_request();
 int send_bmd_path_to_socket(char *msg, char *socket_file){
 	/**
-	 * TODO: This function can be implemented in a separate module
+	 * TO DO : This function can be implemented in a separate module
 	 * which will also implement the socket server.
 	 */
 	return 1; /* 1 => Success */
