@@ -11,13 +11,13 @@ int fetch_new_request_from_db(bmd *request)
      */
     printf("Checking for new requests in esb_requests table.\n");
     if(request!=NULL)
-        
-    return 1; // 1 => OK, -1 => Errors
+        return 0;
      //printf("Checking for new requests in esb_requests table.\n");
+        return 1; // 1 => OK, -1 => Errors
 }
 
 /**
- * TODO: Implement the proper logic as per ESB specs.
+ * DO: Implement the proper logic as per ESB specs.
  */
 void *poll_database_for_new_requets(void *vargp)
 {
@@ -42,6 +42,7 @@ void *poll_database_for_new_requets(void *vargp)
          * are any newly received BMD requets.
          */
         bmd req;
+        req = fetch_data();
         /**
          * Step 3:
          */
