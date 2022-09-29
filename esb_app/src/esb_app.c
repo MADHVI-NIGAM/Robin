@@ -239,4 +239,5 @@ save_bmd(struct http_request *req)
 		strcpy(ep_res.bmd_path, bmd_file_path);
 	}
 	return ep_res;
+
 }
