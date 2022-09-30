@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include "email.h"
 #include "esb.h"
 
@@ -18,7 +19,7 @@ bmd parse_bmd_xml(char* bmd_file_path) {
 }
 
 
-int is_bmd_valid(bmd b)
+static int is_bmd_valid(bmd b)
 {
     int valid = 1; // 1 => vaild, -1 => invalid
     // TODO: Implement the validation logic here
