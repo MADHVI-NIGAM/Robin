@@ -17,16 +17,16 @@ bmd parse_bmd_xml(char* bmd_file_path) {
     return b;
 }
 
+
 int is_bmd_valid(bmd b)
 {
     int valid = 1; // 1 => vaild, -1 => invalid
     // TODO: Implement the validation logic here
 
-    }
     return valid;
 }
 
-int queue_the_request(bmd b)
+static int queue_the_request(bmd b)
 {
     int success = 1; // 1 => OK, -1 => Error cases
     /** 
