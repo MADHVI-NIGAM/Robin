@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include "email.h"
 #include "esb.h"
-
+#include <sqlite3.h>
 /**
  * TODO: This is to be implemented separately.
  */
@@ -23,7 +23,10 @@ static int is_bmd_valid(bmd b)
 {
     int valid = 1; // 1 => vaild, -1 => invalid
     // TODO: Implement the validation logic here
-
+    if(envl.sender_id==NULL || envl.destination_id==NULL || envl.message_id==NULL)
+    {
+        valid=-1;
+    }
     return valid;
 }
 
@@ -35,7 +38,25 @@ static int queue_the_request(bmd b)
      * and implement other logic for enqueueing the request
      * as specified in Theory of Operation.
      */
-
+    rc = sqlite3_open("test.db", &db);
+   
+   if( rc ) {
+      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+      return(0);
+   } else {
+      fprintf(stdout, "Opened database successfully\n");
+   }
+   sql="INSERT INTO ESB_REQUEST(SENDER_ID,DEST_ID,MESSAGE_TYPE)"
+        "VALUES(envl.sender_id,envl.destination_id,envl.message_type)"
+        rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   
+   if( rc != SQLITE_OK ){
+      fprintf(stderr, "SQL error: %s\n", zErrMsg);
+      sqlite3_free(zErrMsg);
+   } else {
+      fprintf(stdout, "Records created successfully\n");
+   }
+    sqlite3_close(db);
     return success;
 }
 

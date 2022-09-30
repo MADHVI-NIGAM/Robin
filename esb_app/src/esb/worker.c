@@ -25,12 +25,51 @@ void *poll_database_for_new_requets(void *vargp)
     sqlite3 *db;
     char *ErrMsg=0
     int rc;
+    const char sql[];
     rc = sqlite3_open("test.db", &db);
    if( rc ) {
       fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
       return(0);
    } else {
       fprintf(stderr, "Opened database successfully\n");
+   }
+   sql="CREATE TABLE ROUTES("
+   "ROUTE_ID INT PRIMARY KEY NOT NULL",
+   "SENDER VARCHAR(45) TEXT NOT NULL",
+   "DESTINATION VARCHAR(45) TEXT NOT NULL",
+   "MESSAGE_TYPE VARCHAR(45) NOT NULL",
+   "IS_ACTIVE BIT(1) NOT NULL);";
+
+   sql="CREATE TABLE TRANSFORM_CONFIG("
+   "ID INT PRIMARY KEY NOT NULL",
+   "ROUTE_ID INT MOT NULL",
+   "CONFIG_KEY VARCHAR(45) NOT NULL",
+   "CONFIG_VALUE TEXT NOT NULL);";
+
+   sql="CREATE TABLE ESB_REQUEST("
+   "ID INT PRIMARY KEY NOT NULL",
+   "SENDER_ID VARCHAR(45) NOT NULL",
+   "DEST_ID VARCHAR(45) NOT NULL",
+   "MESSAGE_TYPE VARCHAR(45) NOT NULL",
+   "REFERENCE_ID VARCHAR(45) NOT NULL",
+   "MESSAGE_ID VARCHAR(45) NOT NULL",
+   "RECIEVED_ON DATETIME NOT NULL",
+   "DATA_LOCATION TEXT NOT NULL",
+   "STATUS VARCHAR(20) NOT NULL",
+   "STATUS_DETAILS TEXT NOT NULL);";
+
+   sql="CREATE TABLE TRANSPORT_CONFIG("
+   "ID INT PRIMARY KEY NOT NULL",
+   "ROUTE_ID INT NOT NULL",
+   "CONFIG_KEY VARCHAR(45) NOT NULL",
+   "CONFIG_VALUE TEXT NOT NULL);";
+   rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   
+   if( rc != SQLITE_OK ){
+      fprintf(stderr, "SQL error: %s\n", zErrMsg);
+      sqlite3_free(zErrMsg);
+   } else {
+      fprintf(stdout, "Table created successfully\n");
    }
    sqlite3_close(db);
     int i = 0;
